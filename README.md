@@ -1,85 +1,162 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Backend DBSoft Template
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is a boilerplate backend template built with NestJS and MikroORM using PostgreSQL as the database. It includes JWT authentication, Swagger for API documentation, and tools like bcryptjs for password hashing.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
+* NestJS: A progressive Node.js framework for building efficient, reliable, and scalable server-side applications.
+* MikroORM: An ORM for TypeScript and Node.js with built-in support for PostgreSQL.
+* JWT Authentication: Secure authentication with passport-jwt and bcryptjs for password encryption.
+* Swagger: Automatically generated API documentation using nestjs/swagger.
+* ESLint & Prettier: Code linting and formatting enforced by ESLint and Prettier.
+* Helmet: Basic security headers for Node.js apps.
 
-## Description
+## Getting Started
+### Prerequisites
+* Node.js v16 or higher
+* PostgreSQL (configured to your liking)
+* Yarn, npm or pnpm (depending on your package manager of choice)
+### Installation
+Clone the repository:
+```bash
+git clone https://github.com/your-repo/backend-dbsoft-template.git
+cd backend-dbsoft-template
+```
+Install dependencies:
+```bash
+# Using npm
+npm install
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# Using yarn
+yarn install
 
-## Project setup
+# Using pnpm
+pnpm install
+```
+### Environment Configuration
+Create a .env file in the root directory and add the necessary environment variables. Here’s an example configuration:
+
+```env
+// DATABASE
+DATABASE_HOST
+DATABASE_PORT
+DATABASE_USER 
+DATABASE_PASSWORD
+DATABASE_NAME
+
+// EMAIL PROVIDER
+EMAIL_PROVIDER
+
+// SECURITY
+JWT_SECRET
+```
+## Database Setup
+Make sure your PostgreSQL database is running and migrate the database schema:
+```bash
+# Run MikroORM migrations
+npm run mikro-orm migration:up
+```
+### Running the Application
+To start the application in development mode:
+```bash
+npm run start:dev
+```
+To start in production mode:
+```bash
+npm run start:prod
+```
+By default, the application will run on http://localhost:3000.
+
+### API Documentation
+Swagger documentation is available by default. Once the application is running, visit:
+```bash
+http://localhost:3000/api
+```
+This will open the Swagger UI for exploring and testing the available API endpoints.
+
+## Testing
+Run the test suite using Jest:
 
 ```bash
-$ pnpm install
+npm run test
 ```
-
-## Compile and run the project
+For continuous test execution while developing:
 
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+npm run test:watch
 ```
-
-## Run tests
+For test coverage reports:
+```bash
+npm run test:cov
+```
+## Code Quality
+To format your code according to Prettier’s configuration:
 
 ```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+npm run format
 ```
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+To lint the code using ESLint:
+```bash
+npm run lint
+```
+## Project Structure
+```bash
+src/
+│
+├── auth/                   # Authentication module
+│   ├── controller/         # Authentication-related controllers
+│   ├── dto/                # Data Transfer Objects (DTOs) for authentication
+│   ├── entities/           # Entities related to authentication (e.g., Otp)
+│   ├── interface/          # Authentication service interfaces
+│   ├── repository/         # Repository for handling authentication entities
+│   ├── service/            # Authentication services and business logic
+│   ├── auth.controller.spec.ts  # Unit tests for the controller
+│   ├── auth.module.ts      # Authentication module
+│   └── auth.service.spec.ts # Unit tests for the service
+│
+├── common/
+│   └── entities/           # Common entities, such as the base class `BaseEntity`
+│
+├── users/                  # User management module
+│   ├── controller/         # Controllers related to user management
+│   ├── dto/                # DTOs related to users
+│   ├── entities/           # Entities related to users
+│   ├── repository/         # Repository for handling user entities
+│   ├── service/            # Services related to user management
+│   ├── test/               # Unit tests for the user module
+│   ├── types/              # Types related to the user domain
+│   └── users.module.ts     # User module
+│
+├── utils/
+│   ├── decorators/         # Custom decorators
+│   └── guards/             # Security guards, such as JWT guard
+│
+├── app.module.ts           # Root module of the application
+├── main.ts                 # Application entry point
+└── mikro-orm.config.ts     # MikroORM configuration
+```
+## Available Scripts
+* build: Builds the application using NestJS's build system.
+* start: Starts the application.
+* start:dev: Starts the application in development mode with hot-reload.
+* start:prod: Starts the application in production mode.
+* format: Formats the codebase using Prettier.
+* lint: Lints the codebase using ESLint and fixes issues.
+* test: Runs all the tests.
+* test:watch: Runs tests in watch mode.
+* test:cov: Generates a coverage report.
+* test:e2e: Runs end-to-end tests.
+## Dependencies Overview
+### Main Dependencies
+* @nestjs/common, @nestjs/core: Core NestJS modules.
+* @mikro-orm/core, @mikro-orm/postgresql: MikroORM with PostgreSQL support.
+* @nestjs/swagger: API documentation using Swagger.
+* @nestjs/jwt, @nestjs/passport: JWT-based authentication.
+* bcryptjs: Password hashing.
+* helmet: Adds basic security headers.
+* class-validator, class-transformer: DTO validation and transformation.
+### Dev Dependencies
+* Jest: Testing framework.
+* TypeScript: TypeScript support.
+* ESLint & Prettier: Linting and code formatting.
+License
+This project is licensed under the UNLICENSED license.

@@ -1,18 +1,16 @@
-import { UserService } from './users/service/user.service';
 import { AuthModule } from './auth/auth.module';
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
-import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
-
+import { MikroOrmModule } from '@mikro-orm/nestjs';
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true, cache: true }),
+    MikroOrmModule.forRoot(),
     AuthModule,
     UsersModule,
-    DatabaseModule,
   ],
   controllers: [],
-  providers: [UserService],
+  providers: [],
 })
 export class AppModule {}
