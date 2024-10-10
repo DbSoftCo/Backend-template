@@ -3,19 +3,17 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { OptRepository } from '../repository/otp.repository';
+import { OtpRepository } from '../repository/otp.repository';
 import { UserService } from '@src/users/service/user.service';
 import { compareSync } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@src/users/entities/user.entity';
 import { LoginAuthDto } from '../dto/login-auth.dto';
-import { OtpService } from './otp.service';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly optRepository: OptRepository,
-    private readonly otpService: OtpService,
+    private readonly optRepository: OtpRepository,
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
   ) {}

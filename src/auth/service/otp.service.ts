@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { OptRepository } from '../repository/otp.repository';
+import { OtpRepository } from '../repository/otp.repository';
 import { UserService } from '@src/users/service/user.service';
 import { OtpCreateDto } from '../dto/otp-create.dto';
 import { OtpCheckValidDto } from '../dto/otp-check-valid.dto';
@@ -7,7 +7,7 @@ import { OtpCheckValidDto } from '../dto/otp-check-valid.dto';
 @Injectable()
 export class OtpService {
   constructor(
-    private readonly optRepository: OptRepository,
+    private readonly optRepository: OtpRepository,
     private readonly userService: UserService,
   ) {}
 

@@ -5,13 +5,13 @@ import {
   OneToOne,
   Property,
 } from '@mikro-orm/postgresql';
-import { OptRepository } from '../repository/otp.repository';
+import { OtpRepository } from '../repository/otp.repository';
 import { BaseEntity } from '@src/common/entities/base.entity';
 import { User } from '@src/users/entities/user.entity';
 
-@Entity({ repository: () => OptRepository })
+@Entity({ repository: () => OtpRepository })
 export class Otp extends BaseEntity {
-  [EntityRepositoryType]?: OptRepository;
+  [EntityRepositoryType]?: OtpRepository;
 
   @OneToOne(() => User)
   user: User;

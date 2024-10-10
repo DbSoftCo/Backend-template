@@ -26,6 +26,12 @@ export class UsersController {
     return await this.usersService.findOneById(userId);
   }
 
+  @ApiOkResponse()
+  @Get()
+  async getAll() {
+    return await this.usersService.findAll();
+  }
+
   @ApiCreatedResponse({ type: User })
   @Post('create')
   @ApiValidationErrors()

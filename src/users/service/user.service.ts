@@ -12,7 +12,7 @@ import { hashSync } from 'bcryptjs';
 @Injectable()
 export class UserService {
   constructor(
-    @Inject(USER_REPOSITORY) private readonly userRepository: UserRepository,
+    private readonly userRepository: UserRepository,
   ) {}
 
   async findOneById(id: string, includePassword = false) {

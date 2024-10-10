@@ -3,4 +3,4 @@ import { Otp } from '../entities/otp.entity';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class OptRepository extends EntityRepository<Otp> {}
+export class OtpRepository extends EntityRepository<Otp> {}

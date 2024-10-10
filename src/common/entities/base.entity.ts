@@ -7,6 +7,7 @@ export abstract class BaseEntity {
   @ApiProperty({
     description: 'Id',
     example: faker.string.uuid(),
+    type: String,
   })
   @PrimaryKey()
   id? = v4();

@@ -42,6 +42,8 @@ export class User extends BaseEntity {
   @ApiProperty({
     description: 'The user role',
     example: faker.helpers.enumValue(USER_ROLE),
+    enum: USER_ROLE,
+    type: String,
   })
   @Enum(() => USER_ROLE)
   role!: USER_ROLE; // string enum
